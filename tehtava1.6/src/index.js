@@ -7,19 +7,33 @@ class App extends React.Component {
       this.state = {
         counterhyva: 0,
         counterneutraali: 0,
-        counterhuono: 0
+        counterhuono: 0,
+        counterkeskiarvo: 0,
+        counterpospros: 0,
+        yht: 0
       }
     }
   
+
     lisaahyva() {
       this.setState({ counterhyva: this.state.counterhyva + 1 })
+      this.laskekeskiarvo()
     }
     lisaaneutraali() {
       this.setState({ counterneutraali: this.state.counterneutraali + 1 })
+      this.laskekeskiarvo()
     }
     lisaahuono() {
         this.setState({ counterhuono: this.state.counterhuono + 1 })
+        this.laskekeskiarvo()
       }
+
+    laskekeskiarvo() {
+        this.setState({ yht: this.state.counterhyva + this.state.counterneutraali + this.state.counterhuono})
+    }
+    laskepospros() {
+
+    }
   
     render() {
       return (
@@ -39,6 +53,8 @@ class App extends React.Component {
           <div><h3>statistiikka</h3></div>
           <div>hyvä {this.state.counterhyva}</div>
           <div>neutraali {this.state.counterneutraali}</div>
+          <div>huono {this.state.counterhuono}</div>
+          <div>keskiarvo {this.state.yht}</div>
           <div>huono {this.state.counterhuono}</div>
         </div>
       )
